@@ -13,7 +13,7 @@ class CreateWebMonksUploadedPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('WebMonks_uploaded_photos', function (Blueprint $table) {
+        Schema::create('web_monks_uploaded_photos', function (Blueprint $table) {
             $table->increments('id');
             $table->text("uploaded_images")->nullable();
             $table->string("image_title")->nullable();

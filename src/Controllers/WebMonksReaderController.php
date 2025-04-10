@@ -47,17 +47,17 @@ class WebMonksReaderController extends Controller
         if ($category_slug) {
             $category = WebMonksCategoryTranslation::where("slug", $category_slug)->with('category')->firstOrFail()->category;
             $categoryChain = $category->getAncestorsAndSelf();
-            $posts = $category->posts()->where("webmonks_post_categories.category_id", $category->id)->with([ 'postTranslations' => function($query) use ($request){
+            $posts = $category->posts()->where("web_monks_post_categories.category_id", $category->id)->with([ 'postTranslations' => function($query) use ($request){
                 $query->where("lang_id" , '=' , $request->get("lang_id"));
             }
             ])->get();
 
-            $posts = WebMonksPostTranslation::join('webmonks_posts', 'webmonks_post_translations.post_id', '=', 'webmonks_posts.id')
+            $posts = WebMonksPostTranslation::join('web_monks_posts', 'web_monks_post_translations.post_id', '=', 'web_monks_posts.id')
                 ->where('lang_id', $request->get("lang_id"))
                 ->where("is_published" , '=' , true)
                 ->where('posted_at', '<', Carbon::now()->format('Y-m-d H:i:s'))
                 ->orderBy("posted_at", "desc")
-                ->whereIn('webmonks_posts.id', $posts->pluck('id'))
+                ->whereIn('web_monks_posts.id', $posts->pluck('id'))
                 ->paginate(config("webmonksblog.per_page", 10));
 
             // at the moment we handle this special case (viewing a category) by hard coding in the following two lines.
@@ -65,7 +65,7 @@ class WebMonksReaderController extends Controller
             \View::share('webmonksblog_category', $category); // so the view can say "You are viewing $CATEGORYNAME category posts"
             $title = 'Posts in ' . $category->category_name . " category"; // hardcode title here...
         } else {
-            $posts = WebMonksPostTranslation::join('webmonks_posts', 'webmonks_post_translations.post_id', '=', 'webmonks_posts.id')
+            $posts = WebMonksPostTranslation::join('web_monks_posts', 'web_monks_post_translations.post_id', '=', 'web_monks_posts.id')
                 ->where('lang_id', $request->get("lang_id"))
                 ->where("is_published" , '=' , true)
                 ->where('posted_at', '<', Carbon::now()->format('Y-m-d H:i:s'))

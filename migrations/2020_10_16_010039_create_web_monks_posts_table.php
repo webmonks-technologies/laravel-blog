@@ -13,7 +13,7 @@ class CreateWebMonksPostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('webmonks_posts', function (Blueprint $table) {
+        Schema::create('web_monks_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger("user_id")->index()->nullable();
 
@@ -23,11 +23,11 @@ class CreateWebMonksPostsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('webmonks_post_categories', function (Blueprint $table) {
+        Schema::create('web_monks_post_categories', function (Blueprint $table) {
             $table->increments('id');
 
             $table->unsignedInteger("post_id")->index();
-            $table->foreign('post_id')->references('id')->on('webmonks_posts')->onDelete("cascade");
+            $table->foreign('post_id')->references('id')->on('web_monks_posts')->onDelete("cascade");
 
             $table->unsignedInteger("category_id")->index();
             $table->foreign('category_id')->references('id')->on('webmonks_categories')->onDelete("cascade");
@@ -41,6 +41,6 @@ class CreateWebMonksPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('webmonks_posts');
+        Schema::dropIfExists('web_monks_posts');
     }
 }

@@ -13,7 +13,7 @@ class CreateWebMonksPostTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('webmonks_post_translations', function (Blueprint $table) {
+        Schema::create('web_monks_post_translations', function (Blueprint $table) {
             $table->increments('id');
 
             $table->unsignedInteger('post_id')->nullable();
@@ -46,6 +46,6 @@ class CreateWebMonksPostTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('webmonks_post_translations');
+        Schema::dropIfExists('web_monks_post_translations');
     }
 }

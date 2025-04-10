@@ -38,14 +38,14 @@ class WebMonksBlogServiceProvider extends ServiceProvider
         }
 
         foreach ([
-                     '2020_10_16_005400_create_WebMonks_categories_table.php',
-                     '2020_10_16_005425_create_WebMonks_category_translations_table.php',
-                     '2020_10_16_010039_create_WebMonks_posts_table.php',
-                     '2020_10_16_010049_create_WebMonks_post_translations_table.php',
-                     '2020_10_16_121230_create_WebMonks_comments_table.php',
-                     '2020_10_16_121728_create_WebMonks_uploaded_photos_table.php',
-                     '2020_10_16_004241_create_WebMonks_languages_table.php',
-                     '2020_10_22_132005_create_WebMonks_configurations_table.php',
+                     '2020_10_16_005400_create_web_monks_categories_table.php',
+                     '2020_10_16_005425_create_web_monks_category_translations_table.php',
+                     '2020_10_16_010039_create_web_monks_posts_table.php',
+                     '2020_10_16_010049_create_web_monks_post_translations_table.php',
+                     '2020_10_16_121230_create_web_monks_comments_table.php',
+                     '2020_10_16_121728_create_web_monks_uploaded_photos_table.php',
+                     '2020_10_16_004241_create_web_monks_languages_table.php',
+                     '2020_10_22_132005_create_web_monks_configurations_table.php',
                      '2016_11_04_152913_create_laravel_fulltext_table.php'
                  ] as $file) {
 
@@ -79,9 +79,8 @@ class WebMonksBlogServiceProvider extends ServiceProvider
             Search::class
         );
 
-        // for the admin backend views ( view("WebMonksblog_admin::BLADEFILE") )
-        $this->loadViewsFrom(__DIR__ . "/Views/WebMonksblog_admin", 'WebMonksblog_admin');
-
+        // for the admin backend views ( view("webmonksblog_admin::BLADEFILE") )
+        $this->loadViewsFrom(__DIR__ . "/Views/webmonksblog_admin", 'webmonksblog_admin');
         // for public facing views (view("webmonksblog::BLADEFILE")):
         // if you do the vendor:publish, these will be copied to /resources/views/vendor/webmonksblog anyway
         $this->loadViewsFrom(__DIR__ . "/Views/webmonksblog", 'webmonksblog');

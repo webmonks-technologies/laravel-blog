@@ -46,7 +46,7 @@
                                             <h4 class="info-text">Your default language will be set to English. You can add more language through the admin panel.</h4>
 
                                             <h6 class="info-text">
-                                                Version v9.3.x
+                                                Version v1.0.X
                                             </h6>
                                         </div>
 

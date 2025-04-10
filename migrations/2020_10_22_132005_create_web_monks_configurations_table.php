@@ -13,7 +13,7 @@ class CreateWebMonksConfigurationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('WebMonks_configurations', function (Blueprint $table) {
+        Schema::create('web_monks_configurations', function (Blueprint $table) {
             $table->string("key")->primary();
             $table->string("value");
             $table->timestamps();

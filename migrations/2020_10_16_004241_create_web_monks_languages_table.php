@@ -13,7 +13,7 @@ class CreateWebMonksLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('webmonks_languages', function (Blueprint $table) {
+        Schema::create('web_monks_languages', function (Blueprint $table) {
             $table->increments('id');
 
             $table->string("name")->unique();
