@@ -81,7 +81,6 @@ class WebMonksBlogServiceProvider extends ServiceProvider
 
         // for the admin backend views ( view("webmonksblog_admin::BLADEFILE") )
         $this->loadViewsFrom(__DIR__ . "/Views/webmonksblog_admin", 'webmonksblog_admin');
-
         // for public facing views (view("webmonksblog::BLADEFILE")):
         // if you do the vendor:publish, these will be copied to /resources/views/vendor/webmonksblog anyway
         $this->loadViewsFrom(__DIR__ . "/Views/webmonksblog", 'webmonksblog');
