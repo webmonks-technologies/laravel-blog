@@ -52,12 +52,12 @@ class WebMonksReaderController extends Controller
             }
             ])->get();
 
-            $posts = WebMonksPostTranslation::join('webmonks_posts', 'webmonks_post_translations.post_id', '=', 'webmonks_posts.id')
+            $posts = WebMonksPostTranslation::join('web_monks_posts', 'webmonks_post_translations.post_id', '=', 'web_monks_posts.id')
                 ->where('lang_id', $request->get("lang_id"))
                 ->where("is_published" , '=' , true)
                 ->where('posted_at', '<', Carbon::now()->format('Y-m-d H:i:s'))
                 ->orderBy("posted_at", "desc")
-                ->whereIn('webmonks_posts.id', $posts->pluck('id'))
+                ->whereIn('web_monks_posts.id', $posts->pluck('id'))
                 ->paginate(config("webmonksblog.per_page", 10));
 
             // at the moment we handle this special case (viewing a category) by hard coding in the following two lines.
@@ -65,7 +65,7 @@ class WebMonksReaderController extends Controller
             \View::share('webmonksblog_category', $category); // so the view can say "You are viewing $CATEGORYNAME category posts"
             $title = 'Posts in ' . $category->category_name . " category"; // hardcode title here...
         } else {
-            $posts = WebMonksPostTranslation::join('webmonks_posts', 'webmonks_post_translations.post_id', '=', 'webmonks_posts.id')
+            $posts = WebMonksPostTranslation::join('web_monks_posts', 'webmonks_post_translations.post_id', '=', 'web_monks_posts.id')
                 ->where('lang_id', $request->get("lang_id"))
                 ->where("is_published" , '=' , true)
                 ->where('posted_at', '<', Carbon::now()->format('Y-m-d H:i:s'))

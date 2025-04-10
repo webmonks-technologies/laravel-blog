@@ -154,7 +154,7 @@ class MainTest extends \Tests\TestCase
 
         $new_object_vals['_token'] = csrf_token();
 
-        $this->assertDatabaseMissing('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseMissing('web_monks_posts', $search_for_obj);
         $response = $this->post($admin_panel_url . "/add_post", $new_object_vals);
 
         $response->assertSessionHasNoErrors();
@@ -162,7 +162,7 @@ class MainTest extends \Tests\TestCase
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
 
     }
@@ -187,13 +187,13 @@ class MainTest extends \Tests\TestCase
 
         $new_object_vals['_token'] = csrf_token();
 
-        $this->assertDatabaseMissing('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseMissing('web_monks_posts', $search_for_obj);
         $response = $this->post($admin_panel_url . "/add_post", $new_object_vals);
         $response->assertSessionHasNoErrors();
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
 
     }
@@ -220,20 +220,20 @@ class MainTest extends \Tests\TestCase
 
         $new_object_vals['_token'] = csrf_token();
 
-        $this->assertDatabaseMissing('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseMissing('web_monks_posts', $search_for_obj);
         $response = $this->post($admin_panel_url . "/add_post", $new_object_vals);
         $response->assertSessionHasNoErrors();
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
         $justCreatedRow = \WebMonksBlog\Models\WebMonksPost::where("slug", $new_object_vals['slug'])->firstOrFail();
 
 
         $new_object_vals['title'] = "New title " . str_random();
-        $this->assertDatabaseMissing('webmonks_posts', ['title' => $new_object_vals['title']]);
+        $this->assertDatabaseMissing('web_monks_posts', ['title' => $new_object_vals['title']]);
         $response = $this->patch($admin_panel_url . "/edit_post/" . $justCreatedRow->id, $new_object_vals);
         $response->assertStatus(302);
-        $this->assertDatabaseHas('webmonks_posts', ['title' => $new_object_vals['title']]);
+        $this->assertDatabaseHas('web_monks_posts', ['title' => $new_object_vals['title']]);
 
 
     }
@@ -262,7 +262,7 @@ class MainTest extends \Tests\TestCase
 
         $new_object_vals['_token'] = csrf_token();
 
-        $this->assertDatabaseMissing('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseMissing('web_monks_posts', $search_for_obj);
 
 
         // check we don't see it at moment
@@ -279,7 +279,7 @@ class MainTest extends \Tests\TestCase
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
         // logout - so we are guest user
         \Auth::logout();
@@ -320,7 +320,7 @@ class MainTest extends \Tests\TestCase
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
         // must log out, as the admin user can see posts dated in future
         \Auth::logout();
@@ -355,7 +355,7 @@ class MainTest extends \Tests\TestCase
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
         // must log out, as the admin user can see posts dated in future
         \Auth::logout();
@@ -406,7 +406,7 @@ class MainTest extends \Tests\TestCase
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
 
         \Config::set('webmonksblog.comments.type_of_comments_to_show', 'built_in');
@@ -563,7 +563,7 @@ class MainTest extends \Tests\TestCase
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
 
         \Config::set('webmonksblog.comments.type_of_comments_to_show', 'built_in');
@@ -625,7 +625,7 @@ class MainTest extends \Tests\TestCase
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
 
         \Config::set('webmonksblog.comments.type_of_comments_to_show', 'built_in');
@@ -688,7 +688,7 @@ class MainTest extends \Tests\TestCase
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
 
         if (config("webmonksblog.comments.type_of_comments_to_show") === 'built_in') {
@@ -751,13 +751,13 @@ class MainTest extends \Tests\TestCase
 
         $new_object_vals['_token'] = csrf_token();
 
-        $this->assertDatabaseMissing('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseMissing('web_monks_posts', $search_for_obj);
         $response = $this->post($admin_panel_url . "/add_post", $new_object_vals);
         $response->assertSessionHasNoErrors();
 
 
         $response->assertStatus(302); // redirect
-        $this->assertDatabaseHas('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseHas('web_monks_posts', $search_for_obj);
 
 
         $justCreatedRow = \WebMonksBlog\Models\WebMonksPost::where("slug", $new_object_vals['slug'])->firstOrFail();
@@ -767,7 +767,7 @@ class MainTest extends \Tests\TestCase
         $response = $this->delete($delete_url, ['_token' => csrf_token()]);
         $response->assertStatus(200);
 
-        $this->assertDatabaseMissing('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseMissing('web_monks_posts', $search_for_obj);
 
     }
 
@@ -952,7 +952,7 @@ class MainTest extends \Tests\TestCase
 
         $new_object_vals['_token'] = csrf_token();
 
-        $this->assertDatabaseMissing('webmonks_posts', $search_for_obj);
+        $this->assertDatabaseMissing('web_monks_posts', $search_for_obj);
 
         // check we don't see it at moment
         $response = $this->get(config("webmonksblog.blog_prefix", "blog"));
