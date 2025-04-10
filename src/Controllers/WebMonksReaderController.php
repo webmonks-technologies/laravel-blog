@@ -52,7 +52,7 @@ class WebMonksReaderController extends Controller
             }
             ])->get();
 
-            $posts = WebMonksPostTranslation::join('web_monks_posts', 'webmonks_post_translations.post_id', '=', 'web_monks_posts.id')
+            $posts = WebMonksPostTranslation::join('web_monks_posts', 'web_monks_post_translations.post_id', '=', 'web_monks_posts.id')
                 ->where('lang_id', $request->get("lang_id"))
                 ->where("is_published" , '=' , true)
                 ->where('posted_at', '<', Carbon::now()->format('Y-m-d H:i:s'))
@@ -65,7 +65,7 @@ class WebMonksReaderController extends Controller
             \View::share('webmonksblog_category', $category); // so the view can say "You are viewing $CATEGORYNAME category posts"
             $title = 'Posts in ' . $category->category_name . " category"; // hardcode title here...
         } else {
-            $posts = WebMonksPostTranslation::join('web_monks_posts', 'webmonks_post_translations.post_id', '=', 'web_monks_posts.id')
+            $posts = WebMonksPostTranslation::join('web_monks_posts', 'web_monks_post_translations.post_id', '=', 'web_monks_posts.id')
                 ->where('lang_id', $request->get("lang_id"))
                 ->where("is_published" , '=' , true)
                 ->where('posted_at', '<', Carbon::now()->format('Y-m-d H:i:s'))

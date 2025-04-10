@@ -2,14 +2,13 @@
 
 namespace WebMonksBlog\Requests;
 
-
 use Illuminate\Validation\Rule;
 use WebMonksBlog\Models\WebMonksPost;
 use WebMonksBlog\Requests\Traits\HasCategoriesTrait;
 use WebMonksBlog\Requests\Traits\HasImageUploadTrait;
 
-class UpdateWebMonksBlogPostRequest  extends BaseWebMonksBlogPostRequest {
-
+class UpdateWebMonksBlogPostRequest extends BaseWebMonksBlogPostRequest
+{
     use HasCategoriesTrait;
     use HasImageUploadTrait;
 
@@ -21,7 +20,7 @@ class UpdateWebMonksBlogPostRequest  extends BaseWebMonksBlogPostRequest {
     public function rules()
     {
         $return = $this->baseBlogPostRules();
-//        $return['slug'] [] = Rule::unique("webmonks_post_translations", "slug")->ignore($this->route()->parameter("blogPostId"));
+        //        $return['slug'] [] = Rule::unique("web_monks_post_translations", "slug")->ignore($this->route()->parameter("blogPostId"));
         return $return;
     }
 }

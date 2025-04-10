@@ -46,6 +46,6 @@ class CreateWebMonksPostTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('webmonks_post_translations');
+        Schema::dropIfExists('web_monks_post_translations');
     }
 }
