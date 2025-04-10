@@ -13,7 +13,7 @@ class CreateWebMonksCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('webmonks_comments', function (Blueprint $table) {
+        Schema::create('web_monks_comments', function (Blueprint $table) {
             $table->increments('id');
 
             $table->unsignedInteger("post_id")->index();

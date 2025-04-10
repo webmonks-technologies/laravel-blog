@@ -13,7 +13,7 @@ class CreateWebMonksCategoryTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('webmonks_category_translations', function (Blueprint $table) {
+        Schema::create('web_monks_category_translations', function (Blueprint $table) {
             $table->increments('id');
 
             $table->unsignedInteger('category_id')->nullable();
