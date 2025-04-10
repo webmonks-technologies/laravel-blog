@@ -23,7 +23,7 @@ class CreateWebMonksPostsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('webmonks_post_categories', function (Blueprint $table) {
+        Schema::create('web_monks_post_categories', function (Blueprint $table) {
             $table->increments('id');
 
             $table->unsignedInteger("post_id")->index();

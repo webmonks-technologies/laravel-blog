@@ -35,7 +35,7 @@ class WebMonksCategory extends Node
      */
     public function posts()
     {
-        return $this->belongsToMany(WebMonksPost::class, 'webmonks_post_categories','category_id', 'post_id');
+        return $this->belongsToMany(WebMonksPost::class, 'web_monks_post_categories','category_id', 'post_id');
     }
 
     public function loadSiblings(){

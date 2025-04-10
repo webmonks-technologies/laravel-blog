@@ -47,7 +47,7 @@ class WebMonksReaderController extends Controller
         if ($category_slug) {
             $category = WebMonksCategoryTranslation::where("slug", $category_slug)->with('category')->firstOrFail()->category;
             $categoryChain = $category->getAncestorsAndSelf();
-            $posts = $category->posts()->where("webmonks_post_categories.category_id", $category->id)->with([ 'postTranslations' => function($query) use ($request){
+            $posts = $category->posts()->where("web_monks_post_categories.category_id", $category->id)->with([ 'postTranslations' => function($query) use ($request){
                 $query->where("lang_id" , '=' , $request->get("lang_id"));
             }
             ])->get();

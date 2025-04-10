@@ -91,7 +91,7 @@ class WebMonksPost extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany(WebMonksCategory::class, 'webmonks_post_categories','post_id','category_id');
+        return $this->belongsToMany(WebMonksCategory::class, 'web_monks_post_categories','post_id','category_id');
     }
 
     /**
